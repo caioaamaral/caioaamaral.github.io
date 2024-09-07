@@ -4,6 +4,7 @@ date: 2022-08-25 19:33:00 +/-TTTT
 categories: [Robotics]
 tags: [robotics, ros2, humble, docker]     # TAG names should always be lowercase
 pin: false
+permalink: /v4/a-lua-e-do-brasil/
 image:
   src: /assets/img/docker.png
   width: 400   # in pixels
