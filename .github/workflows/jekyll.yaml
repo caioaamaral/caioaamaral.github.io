@@ -13,24 +13,25 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
-      - name: List Files for Debugging
-        run: ls -R  # Lists all files and directories recursively
-
       - name: Copy Custom Config
         run: cp v4/_config.yml _config.yml  # Adjust the path to your custom config
 
+      - name: List Files for Debugging
+        run: ls -R  # Lists all files and directories recursively
+
+      - name: Save Config as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: config
+          path: _config.yml  # Save the copied _config.yml file as an artifact
+
   build:
     runs-on: ubuntu-latest
+    needs: setup
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-
-      - name: List Files for Debugging
-        run: ls -R  # Lists all files and directories recursively
-
-      - name: Copy Custom Config
-        run: cp v4/_config.yml _config.yml  # Adjust the path to your custom config
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -41,15 +42,35 @@ jobs:
         run: |
           gem install bundler jekyll minima
 
+      - name: Download Config Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: config  # Download the _config.yml artifact saved in the setup job
+
       - name: Build Jekyll Site
         run: jekyll build
 
+      - name: List Files for Debugging
+        run: ls -R  # Lists all files and directories recursively
+
+      - name: Save _site as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: site
+          path: _site  # Save the generated _site directory as an artifact
+
   deploy:
     runs-on: ubuntu-latest
+    needs: build
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
+
+      - name: Download _site Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: site  # Download the _site artifact saved in the build job
 
       - name: List Files for Debugging
         run: ls -R  # Lists all files and directories recursively
@@ -58,5 +79,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site  # Default output directory for Jekyll
+          publish_dir: ./_site  # Point to the downloaded _site directory
           publish_branch: gh-pages
