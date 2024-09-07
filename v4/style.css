@@ -60,6 +60,19 @@ div.flex-container {
 
 .main-content {
     flex: 4;
-    background-color: white;
+    background-color: rgb(235, 235, 235);
     color: black;
+}
+
+.main-content .post-list {
+    margin: 50px;
+    width: 80%;
+    /* margin-right: 100px; */
+    padding: 0px;
+}
+
+.main-content .post-entry {
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
 }

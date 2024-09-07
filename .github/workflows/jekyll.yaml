@@ -1,0 +1,39 @@
+name: Build and deploy Jekyll site
+
+on:
+  push:
+    branches:
+      - jekyll
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: List Files for Debugging
+        run: ls -R  # Lists all files and directories recursively
+
+      - name: Copy Custom Config
+        run: cp v4/_config.yml _config.yml  # Adjust the path to your custom config
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0  # Specify the Ruby version needed for Jekyll
+
+      - name: Install Jekyll and Bundler
+        run: |
+          gem install bundler jekyll minima
+
+      - name: Build Jekyll Site
+        run: jekyll build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site  # Default output directory for Jekyll
+          publish_branch: gh-pages
