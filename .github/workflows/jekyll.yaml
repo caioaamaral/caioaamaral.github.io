@@ -18,14 +18,15 @@ jobs:
         run: |
           cp v4/_config.yml _config.yml
           cp -rf v4/_layouts _layouts
+          cp -rf v4/assets assets
 
       - name: List Files for Debugging
-        run: ls -R  # Lists all files and directories recursively
+        run: ls -R
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0  # Specify the Ruby version needed for Jekyll
+          ruby-version: 3.0
 
       - name: Install Jekyll and Bundler
         run: gem install bundler jekyll minima
@@ -33,31 +34,12 @@ jobs:
       - name: Build Jekyll Site
         run: jekyll build
 
-      # - name: Move Generated `_site` to Parent Directory
-      #   run: mv _site ../_site
-      #   working-directory: ./v4
-
       - name: List Files for Debugging
         run: ls /home/runner/work/caioaamaral.github.io/caioaamaral.github.io/_site
-
-      # - name: List Files for Debugging
-      #   run: git status  # Lists all files and directories recursively
-
-      # - name: Commit and Push to gh-pages
-      #   run: |
-      #     # Configure Git user identity
-      #     git config user.name "GitHub Actions"
-      #     git config user.email "github-actions@github.com"
-
-      #     # Attempt to checkout gh-pages branch; create if it doesn't exist
-      #     (git checkout gh-pages || git checkout -b gh-pages) && git add _site/ && git commit -m "Deploy Jekyll site" && git push origin gh-pages
-
-      # - name: Save _site to Specific Path
-      #   run: cp -r _site/ /home/runner/work/caioaamaral.github.io/caioaamaral.github.io/_site
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site  # Point to the downloaded _site directory
+          publish_dir: ./_site
           publish_branch: gh-pages
