@@ -38,6 +38,15 @@ jobs:
       - name: List Files for Debugging
         run: git status  # Lists all files and directories recursively
 
+      - name: Commit and Push to gh-pages
+        run: |
+          # Configure Git user identity
+          git config user.name "GitHub Actions"
+          git config user.email "github-actions@github.com"
+
+          # Attempt to checkout gh-pages branch; create if it doesn't exist
+          (git checkout gh-pages || git checkout -b gh-pages) && git add _site/ && git commit -m "Deploy Jekyll site" && git push origin gh-pages
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
