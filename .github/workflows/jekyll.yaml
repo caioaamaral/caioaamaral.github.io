@@ -15,7 +15,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Copy Custom Config
-        run: cp v4/_config.yml _config.yml  # Adjust the path to your custom config
+        run: |
+          cp v4/_config.yml _config.yml
+          cp -rf v4/_layouts _layouts
 
       - name: List Files for Debugging
         run: ls -R  # Lists all files and directories recursively
@@ -26,14 +28,17 @@ jobs:
           ruby-version: 3.0  # Specify the Ruby version needed for Jekyll
 
       - name: Install Jekyll and Bundler
-        run: |
-          gem install bundler jekyll minima
+        run: gem install bundler jekyll minima
 
       - name: Build Jekyll Site
         run: jekyll build
 
+      # - name: Move Generated `_site` to Parent Directory
+      #   run: mv _site ../_site
+      #   working-directory: ./v4
+
       - name: List Files for Debugging
-        run: ls /home/runner/work/caioaamaral.github.io/caioaamaral.github.io/_site  # Lists all files and directories recursively
+        run: ls /home/runner/work/caioaamaral.github.io/caioaamaral.github.io/_site
 
       # - name: List Files for Debugging
       #   run: git status  # Lists all files and directories recursively
@@ -55,7 +60,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site  # Point to the downloaded _site directory
-          # publish_branch: gh-pages
-
-      - name: List Files for Debugging
-        run: ls /home/runner/work/caioaamaral.github.io/caioaamaral.github.io/_site  # Lists all files and directories recursively
+          publish_branch: gh-pages
