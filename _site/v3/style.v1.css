@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+.container {
+    display: flex;
+}
+
+aside.sidebar {
+    background-color: #333;
+    color: #fff;
+    width: 20%;
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+}
+
+div.profile img {
+    width: 50%;
+    border-radius: 50%;
+    display: block;
+    margin: 30px auto;
+}
+
+div.profile h1 {
+    text-align-last: center;
+    font-family: "Poppins", sans-serif;
+}
+
+main.main-content {
+    margin-left: 20%;
+    padding: 20px;
+    flex: 1;
+}
