@@ -1,5 +1,6 @@
 :root {
-    --primary-color: #121319; /* Example color value */
+    --primary-color: #121319;
+    --secondary-color: #2d2f39;
 }
 
 body {
