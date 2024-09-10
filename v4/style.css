@@ -1,3 +1,7 @@
+:root {
+    --primary-color: #121319; /* Example color value */
+}
+
 body {
     margin: 0;
 }
@@ -9,8 +13,8 @@ div.flex-container {
 }
 
 .sidebar {
-    flex: 1;
-    background-color: black;
+    flex: 0 0 300px;
+    background-color: var(--primary-color);
     color: white;
 }
 

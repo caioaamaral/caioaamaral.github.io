@@ -1,3 +1,8 @@
+:root {
+    --primary-color: #121319;
+    --secondary-color: #2d2f39;
+}
+
 body {
     margin: 0;
     height: 100vh;
@@ -13,8 +18,8 @@ div.flex-container {
 }
 
 .sidebar {
-    flex: 1 0 200px;
-    background-color: black;
+    flex: 0 0 300px;
+    background-color: var(--primary-color);
     color: white;
 }
 
@@ -61,19 +66,56 @@ div.flex-container {
     color: #fff;
 }
 
-
 .main-content {
-    flex: 4;
-    background-color: rgb(235, 235, 235);
+    flex: 1;
     background-color: #2d2f39;
+    padding-top: 20px;
 }
 
 .main-content .post-entry {
-    margin-left: 146px;
-    margin-right: 440px;
-    margin-top: 90px;
-    max-width: calc(100% - 586px); /* 146px left + 440px right */
+    /* margin-top: 90px; */
+
+    margin: 0 auto;
+    margin-left: clamp(20px, 5vw, 200px);
+    padding: 20px;
+    width: 100%; /* Responsive width */
+    max-width: 60%; /* Max width as a percentage for better scaling */
+    min-width: 50px; /* Ensures it doesn't shrink too much */
+    width: auto;
+
     overflow-wrap: break-word;
-    /* border: 1px solid #ddd; */
-    color: #fff;
+    color: #bacbe8;
+}
+
+.main-content .post-entry .title {
+    font-size: 2.5em;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.main-content .post-entry .author {
+    font-weight: 600;
+}
+
+.main-content .post-entry .content {
+    margin-top: 45px;
+    line-height: 1.8;
+    font-size: 1.2em;
+}
+
+.main-content .post-entry .content a {
+    color: #88a7dd;
+}
+
+.main-content .post-entry .content .highlight pre {
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  padding: 15px;
+  overflow-x: auto;
+}
+
+.main-content .post-entry .content p code {
+    color: #8c8bbe;
+    background-color: var(--primary-color);
+    padding: 5px;
 }
