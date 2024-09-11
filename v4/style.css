@@ -65,7 +65,7 @@ div.flex-container {
 
 .main-content {
     flex: 4;
-    background-color: rgb(235, 235, 235);
+    background-color: var(--secondary-color);
     color: black;
 }
 
@@ -76,8 +76,28 @@ div.flex-container {
     padding: 0px;
 }
 
+.main-content .post-list li {
+    list-style: none;
+}
+
 .main-content .post-entry {
-    padding: 10px;
-    border: 1px solid #ddd;
-    background-color: #fff;
+    margin: 0 auto;
+    margin-left: clamp(20px, 5vw, 200px);
+    width: 100%;
+    max-width: 60%;
+    width: auto;
+
+    padding-top: 10px;
+    color: #bacbe8;
+
+    line-height: 1.8;
+}
+
+.main-content .post-entry .post {
+    border-bottom: 1px solid #3e444e;
+}
+
+.main-content .post-list li .post-entry .post a {
+    text-decoration: none;
+    color: #6384da
 }
