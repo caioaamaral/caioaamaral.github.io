@@ -1,3 +1,7 @@
+---
+title: Home
+---
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,12 +46,20 @@
         </aside>
         <main class="main-content">
             <ul class="post-list">
-                <article class="post-entry">
-                    <header>
-                        <h1>A Lua é do Brasil</h1>
-                    </header>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                </article>
+                {% for post in site.posts %}
+                <li>
+                    <div class="post-entry">
+                        <article class="post">
+                            <a class="header-link" href="{{ post.url }}">
+                                <header>
+                                    <h1 class="title">{{ post.title }}</h1>
+                                </header>
+                            </a>
+                            <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+                        </article>
+                    </div>
+                </li>
+                {% endfor %}
             </ul>
         </main>
     </div>
