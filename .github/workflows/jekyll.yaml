@@ -18,6 +18,7 @@ jobs:
         run: |
           cp v4/_config.yml _config.yml
           cp -rf v4/_layouts _layouts
+          cp -rf v4/_includes _includes
           cp -rf v4/assets assets
 
       - name: List Files for Debugging
