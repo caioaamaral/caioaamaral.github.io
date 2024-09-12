@@ -1,0 +1,117 @@
+:root {
+    --primary-color: #121319;
+    --secondary-color: #2d2f39;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+div.flex-container {
+    display: flex;
+    min-height: 100%;
+    width: 100%;
+}
+
+.sidebar {
+    flex: 0 0 300px;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.sidebar .profile img {
+    width: 50%;
+    border-radius: 50%;
+    display: block;
+    margin: 30px auto;
+}
+
+.sidebar .profile .name {
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+}
+
+.sidebar .nav-menu ul {
+    list-style: none;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 20px;
+}
+
+.sidebar .nav-menu li {
+    padding: 15px 0px;
+}
+
+.sidebar .nav-menu .bx {
+    margin-right: 8px;
+}
+
+.sidebar .nav-menu li a {
+    color: rgb(138, 134, 134);
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.sidebar .nav-menu a:hover i {
+    color: #14b9e2;
+}
+
+.sidebar .nav-menu a:hover {
+    color: #fff;
+}
+
+.main-content {
+    flex: 1;
+    background-color: #2d2f39;
+    padding-top: 20px;
+}
+
+.main-content .about {
+    /* margin-top: 90px; */
+
+    margin: 0 auto;
+    margin-left: clamp(20px, 5vw, 200px);
+    padding: 20px;
+    width: 100%; /* Responsive width */
+    max-width: 60%; /* Max width as a percentage for better scaling */
+    min-width: 50px; /* Ensures it doesn't shrink too much */
+    width: auto;
+
+    overflow-wrap: break-word;
+    color: #bacbe8;
+}
+
+.main-content .about .title {
+    font-size: 2.5em;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.main-content .about .content {
+    margin-top: 45px;
+    line-height: 1.8;
+    font-size: 1.2em;
+}
+
+.main-content .post-entry .content a {
+    color: #88a7dd;
+}
+
+.main-content .post-entry .content .highlight pre {
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  padding: 15px;
+  overflow-x: auto;
+}
+
+.main-content .post-entry .content p code {
+    color: #8c8bbe;
+    background-color: var(--primary-color);
+    padding: 5px;
+}
