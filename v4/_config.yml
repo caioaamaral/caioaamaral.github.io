@@ -1,3 +1,12 @@
 title: My GitHub Pages Site
 description: A description of my site.
 theme: minima
+url: "https://caioaamaral.github.io"
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      permalink: /v4/posts/:title/

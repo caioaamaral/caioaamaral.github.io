@@ -7,12 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
 
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ page.title | escape }}">
+    <meta property="og:description" content="{{ post.excerpt | strip_html | truncatewords: 20 }}">
+    <meta property="og:image" content="{{ site.url }}{{ page.image | relative_url }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:site_name" content="{{ site.title }}">
+
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">
+
     <!-- Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <link rel="stylesheet" href="/assets/css/post.css">
 </head>
 
@@ -25,11 +35,15 @@
                 <span class="author">
                     Caio Amaral
                 </span>
-                </span>
                 <span class="date">
                    on {{ page.date | date: "%B %d" }}
                 </span>
                 <div class="content">
+                    {% if page.image %}
+                        <div class="post-image">
+                            <img src="{{ page.image }}">
+                        </div>
+                    {% endif %}
                     {{ content }}
                 </div>
             </article>

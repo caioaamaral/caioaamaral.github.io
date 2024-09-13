@@ -26,6 +26,7 @@ title: Home
         <main class="main-content">
             <ul class="post-list">
                 {% for post in site.posts %}
+                {% unless post.ignore %}
                 <li>
                     <div class="post-entry">
                         <article class="post">
@@ -38,6 +39,7 @@ title: Home
                         </article>
                     </div>
                 </li>
+                {% endunless %}
                 {% endfor %}
             </ul>
         </main>

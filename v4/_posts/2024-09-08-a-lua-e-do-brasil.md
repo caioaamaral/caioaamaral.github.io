@@ -5,6 +5,7 @@ date: 2024-09-08 07:53:00 +/-TTTT
 permalink: /v4/a-lua-e-do-brasil/
 categories: [Robotics]
 tags: [docker, ros2, humble]
+ignore: true
 ---
 
 According to the [official documentation](https://docs.docker.com/get-started/overview/), Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. With Docker, you can manage your infrastructure in the same ways you manage your applications. By taking advantage of Docker’s methodologies for shipping, testing, and deploying code quickly, you can significantly reduce the delay between writing code and running it in production. 
