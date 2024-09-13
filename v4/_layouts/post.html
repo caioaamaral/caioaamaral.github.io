@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>this is me: caioaamaral</title>
+    <title>{{ page.title }}</title>
 
     <!-- Google Fonts -->
     <link
@@ -27,7 +27,7 @@
                 </span>
                 </span>
                 <span class="date">
-                   on Set 8
+                   on {{ page.date | date: "%B %d" }}
                 </span>
                 <div class="content">
                     {{ content }}
