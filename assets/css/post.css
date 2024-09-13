@@ -103,6 +103,19 @@ div.flex-container {
     font-size: 1.2em;
 }
 
+.main-content .post-entry .content .post-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.main-content .post-entry .content .post-image img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+}
+
 .main-content .post-entry .content a {
     color: #88a7dd;
 }
