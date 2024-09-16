@@ -3,14 +3,26 @@
     --secondary-color: #2d2f39;
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: red;
 }
 
 div.flex-container {
     display: flex;
+    flex: 1;
     height: 100vh;
-    width: 100vw;
+    /* width: 100%; */
+    /* min-height: 100%; */
 }
 
 .sidebar {
@@ -62,18 +74,17 @@ div.flex-container {
     color: #fff;
 }
 
-
 .main-content {
-    flex: 4;
+    flex: 1;
+    overflow-y: auto;
     background-color: var(--secondary-color);
     color: black;
 }
 
 .main-content .post-list {
-    margin: 50px;
+    padding: 50px;
     width: 80%;
     /* margin-right: 100px; */
-    padding: 0px;
 }
 
 .main-content .post-list li {

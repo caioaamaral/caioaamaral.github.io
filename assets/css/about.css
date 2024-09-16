@@ -3,18 +3,24 @@
     --secondary-color: #2d2f39;
 }
 
-body {
-    margin: 0;
-    height: 100vh;
-    width: 100vw;
-    overflow-y: auto;
-    overflow-x: hidden;
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
-div.flex-container {
-    display: flex;
-    min-height: 100%;
+body {
+    margin: 0;
     width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: red;
+}
+
+.flex-container {
+    display: flex;
+    flex: 1;
+    height: 100vh;
 }
 
 .sidebar {
@@ -68,19 +74,18 @@ div.flex-container {
 
 .main-content {
     flex: 1;
-    background-color: #2d2f39;
+    background-color: var(--secondary-color);
     padding-top: 20px;
+    overflow-y: auto;
 }
 
 .main-content .about {
-    /* margin-top: 90px; */
-
     margin: 0 auto;
     margin-left: clamp(20px, 5vw, 200px);
     padding: 20px;
     width: 100%; /* Responsive width */
     max-width: 60%; /* Max width as a percentage for better scaling */
-    min-width: 50px; /* Ensures it doesn't shrink too much */
+    min-width: min-content; /* Ensures it doesn't shrink too much */
     width: auto;
 
     overflow-wrap: break-word;
