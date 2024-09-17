@@ -9,18 +9,14 @@
 
 body {
     margin: 0;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
     background-color: red;
 }
 
 .flex-container {
     display: flex;
     flex: 1;
-    height: 100vh;
+    min-height: 100vh;
+    overflow: auto;
 }
 
 .sidebar {
@@ -76,7 +72,6 @@ body {
     flex: 1;
     background-color: var(--secondary-color);
     padding-top: 20px;
-    overflow-y: auto;
 }
 
 .main-content .about {
