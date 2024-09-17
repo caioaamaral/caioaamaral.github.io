@@ -28,12 +28,12 @@ Lua é filha de três pais: **Roberto Ierusalimschy**, **Luiz Henrique de Figuei
 
 Desde sua fundação, em 1987, o grupo vivenciou os anos duros de protecionismo do mercado, atendendo principalmente as demandas domésticas por tecnologia. Tendo a Petrobras como um de seus principais parceiros, o Tecgraf desenvolveu por muitos anos ferramentas de interface gráfica voltadas para aplicações de engenharia.
 
-As barreiras comerciais, contudo, inviabilizavam o uso de software e hardware que estavam bem consolidadas no exterior, uma vez que não podiam ser adquiridas tão facilmente. A solução, portanto, passou a ser a adoção de tecnologias *made in brazil*.
+As barreiras comerciais da época inviabilizavam o uso de software e hardware que estavam bem consolidadas no exterior, uma vez que não podiam ser adquiridas tão facilmente pelo grupo. A solução, portanto, passou a ser a adoção de tecnologias *made in brazil*.
 
 ### O Nascimento
 
 Dois grandes projetos da Petrobras, ED e PGM, buscavam criar interfaces que permitissem a geólogos e engenheiros desenvolver gráficos e gerenciar dados de operação complexos. Em 1992, para atender as necessidades específicas dessas iniciativas, surgiram duas linguagens auxiliares: DEL e SOL.
 
-Com o tempo, manter as duas linguagens se mostrou um grande desafio. A complexidade trazida com a evolução dos projetos mostrou a necessidade de uma linguagem unificada. Que fosse simples, e que pudesse ser utilizada até por não desenvolvedores - que era o caso dos colaboradores da Petrobras.
+Com o tempo, manter as duas linguagens se mostrou um grande desafio. A complexidade trazida com a evolução dos projetos mostrou a necessidade de uma linguagem unificada. Uma que fosse simples, e que pudesse ser utilizada até por não desenvolvedores - que era o caso dos colaboradores da Petrobras.
 
 Assim, em julho de 1993, a Lua brilhou pela primeira vez em bandeira brasileira. Criada como uma linguagem de programação completa, Lua nasceu para atender às demandas de flexibilidade e simplicidade, marcando uma conquista genuinamente nacional em um cenário tecnológico global.
