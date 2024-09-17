@@ -73,15 +73,11 @@ div.flex-container {
 }
 
 .main-content .post-entry {
-    /* margin-top: 90px; */
-
     margin: 0 auto;
     margin-left: clamp(20px, 5vw, 200px);
     padding: 20px;
-    width: 100%; /* Responsive width */
-    max-width: 60%; /* Max width as a percentage for better scaling */
-    min-width: 50px; /* Ensures it doesn't shrink too much */
-    width: auto;
+    max-width: 60%;
+    min-width: min-content;
 
     overflow-wrap: break-word;
     color: #bacbe8;
