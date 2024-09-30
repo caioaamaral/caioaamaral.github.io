@@ -1,0 +1,72 @@
+
+<h3 id="the-problem-of-syntax">The problem of Syntax</h3>
+<p>Grammar is the intrisic set of rules that governs sentence formation. It acts as a device that can generate all the correct sentences of a idiom. At least, that is what applies to syntax. But what could we achieve if we could generate all the correct <em>semantics</em> of a language?</p>
+
+<p>Hallucination is one of the most disturbing problem with LLMs nowadays. When they lack relevant information, absurdities are generated - in very convincing and proper English.While the sentences are all very well structured syntactically, the semantics are pure garbage.</p>
+
+<p>But if one can reason about <em>correct</em> and <em>incorrect</em> semantics, there must be a grammar that sets what is a meaningfull sentence in a language. And that is not a brand-new idea.</p>
+
+<h3 id="montague-grammar">Montague Grammar</h3>
+<p>In the late 1960s, the logician Richard Montague, drawing upon Chomsky Generative Grammar principles, proposed that any natural language could be approached as a formal language. In that way, one could extract meaning from a sentence using mathematical logical tooling, such as lambda calculus and type theory.</p>
+
+<p>To summarize, the Montague Grammar consists of three core concepts:</p>
+<ul>
+  <li><strong>Compositionality</strong>: meaning is not holistic; a sentence’s meaning comes from the meaning of its parts.</li>
+  <li><strong>Type Theory</strong>: this is a first dive into Ontology, a framework that assigns types such as entities, functions and predicates to linguistic expressions.</li>
+  <li><strong>Lambda Calculus</strong>: a formal language that can be used to express computation in a functional programmatic way.</li>
+</ul>
+
+<p>It is interesting how it builds on top of synstax, by using what we nowadays call part-of-speach (POS) tagging to attribue certain types. For example, given a lexicon for “Alice loves Bob” in X-bar diagram:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>          S
+         / \
+      NP   VP
+      |    / \
+    Alice V  NP
+          |    \
+         loves Bob
+</code></pre></div></div>
+
+<p>We have the noun phrases (NP) representing entities and the verb phrase (VP) expressing a truth value relation. Being <em>love</em> a transitive verb, it is treated as a function that takes an object and returns a function that takes a subject, ultimately yelding a truth value inference based on previous knowledge.</p>
+
+<p>In lambda calculus notation:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>loves = λy.λx.loves(x,y)
+</code></pre></div></div>
+
+<p>Or in Python</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">loves</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">obj</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">subj</span><span class="p">:</span> <span class="p">(</span><span class="n">subj</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span> <span class="ow">in</span> <span class="p">{(</span><span class="sh">'</span><span class="s">John</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Mary</span><span class="sh">'</span><span class="p">),</span> <span class="p">(</span><span class="sh">'</span><span class="s">Mary</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Bob</span><span class="sh">'</span><span class="p">),</span> <span class="p">(</span><span class="sh">'</span><span class="s">Bob</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Mary</span><span class="sh">'</span><span class="p">)}</span>
+
+<span class="nf">loves</span><span class="p">(</span><span class="n">Bob</span><span class="p">)(</span><span class="n">Alice</span><span class="p">)</span>
+
+<span class="c1"># yields true for "Alice loves Bob"
+# where the set of tuples represents the previous knowledge we have about 'loves'
+</span>
+</code></pre></div></div>
+
+<p>We can go even further, increasing the definitions relationships. For example let’s analyse the sentences: “every man smilles” and “some man smilles”.</p>
+
+<p>In the given sentences, “every” and “some” represents a quantifiers. They operate a nominal phrase, like “man”, by testing all its individuals againts a predicate (in this case “smiles”). On the other hand, “man” is a predicate that that test for the individuals that are male.</p>
+
+<p>To simplify, let’s represent all that in Python:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">individuals</span> <span class="o">=</span> <span class="sh">'</span><span class="s">John</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Bob</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Mary</span><span class="sh">'</span>
+
+<span class="k">def</span> <span class="nf">every</span><span class="p">(</span><span class="n">NP</span><span class="p">):</span>
+    <span class="k">return</span> <span class="k">lambda</span> <span class="n">VP</span><span class="p">:</span> <span class="nf">all</span><span class="p">(</span><span class="nc">VP</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">individuals</span> <span class="k">if</span> <span class="nc">NP</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">some</span><span class="p">(</span><span class="n">NP</span><span class="p">):</span>
+    <span class="k">return</span> <span class="k">lambda</span> <span class="n">VP</span><span class="p">:</span> <span class="nf">any</span><span class="p">(</span><span class="nc">VP</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">individuals</span> <span class="k">if</span> <span class="nc">NP</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">man</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">{</span><span class="sh">'</span><span class="s">John</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Bob</span><span class="sh">'</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">smiles</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">{</span><span class="sh">'</span><span class="s">John</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Mary</span><span class="sh">'</span><span class="p">}</span>
+
+<span class="nf">every</span><span class="p">(</span><span class="n">man</span><span class="p">)(</span><span class="n">smiles</span><span class="p">)</span> <span class="c1"># False, since Bob doesn't smile
+</span><span class="nf">some</span><span class="p">(</span><span class="n">man</span><span class="p">)(</span><span class="n">smiles</span><span class="p">)</span> <span class="c1"># True
+</span></code></pre></div></div>
+
+<h3 id="limitations-of-the-grammar-approach">Limitations of the Grammar approach</h3>
+
+<p>Natural languages consists of variations and ambiguities, making a such rigid approach difficult (if not impossible) tto apply properly to all the sentences a language can generate. Still, it is a good first step in the search for semantic construction and ontology.</p>
